@@ -320,7 +320,7 @@ function loginWithFacebook() {
     })
     .catch(error => {
       console.error('Facebook login error:', error);
-      
+
       let errorMsg = 'Facebook login failed. Please try again.';
       if (error.code === 'auth/popup-closed-by-user') {
         errorMsg = 'Login popup was closed.';
@@ -329,8 +329,11 @@ function loginWithFacebook() {
       } else if (error.code === 'auth/account-exists-with-different-credential') {
         errorMsg = 'An account already exists with this email.';
       }
-      
-      showAuthError('loginError', 'loginErrorMsg', errorMsg);
+
+      // Use whichever error div is present (login vs register page)
+      const errorDivId = document.getElementById('loginError') ? 'loginError' : 'regError';
+      const errorMsgId = document.getElementById('loginErrorMsg') ? 'loginErrorMsg' : 'regErrorMsg';
+      showAuthError(errorDivId, errorMsgId, errorMsg);
     });
 }
 
