@@ -15,6 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 let auth;
 let googleProvider;
+let facebookProvider;
 
 // Wait for Firebase to load, then initialize
 document.addEventListener('DOMContentLoaded', function() {
@@ -29,7 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
     googleProvider = new firebase.auth.GoogleAuthProvider();
     googleProvider.setCustomParameters({ 'prompt': 'select_account' });
     
-    console.log('✅ Firebase initialized successfully');
+    // Set up Facebook provider
+    facebookProvider = new firebase.auth.FacebookAuthProvider();
+    facebookProvider.setCustomParameters({ 'display': 'popup' });
+    
+    console.log('✅ Firebase initialized with Google & Facebook OAuth');
   } else {
     console.error('❌ Firebase SDK not loaded');
   }
@@ -44,57 +49,32 @@ async function loginWithGoogle() {
     const user = result.user;
     
     // Successfully logged in
-    handleGoogleLoginSuccess(user);
+    handleFirebaseLoginSuccess(user, 'google');
+    
+    // Redirect to properties page
+    window.location.href = 'properties.html';
   } catch (error) {
     console.error('Google login error:', error);
-    handleGoogleLoginError(error);
+    
+    let errorMsg = 'Google login failed. Please try again.';
+    
+    switch (error.code) {
+      case 'auth/popup-closed-by-user':
+        errorMsg = 'Login popup was closed.';
+        break;
+      case 'auth/popup-blocked':
+        errorMsg = 'Popup was blocked. Please allow popups for this site.';
+        break;
+      case 'auth/account-exists-with-different-credential':
+        errorMsg = 'An account already exists with this email.';
+        break;
+      case 'auth/invalid-credential':
+        errorMsg = 'Invalid credentials. Please try again.';
+        break;
+    }
+    
+    alert(errorMsg);
   }
-}
-
-// ===================================================
-// HANDLE SUCCESSFUL GOOGLE LOGIN
-// ===================================================
-function handleGoogleLoginSuccess(user) {
-  const userData = {
-    uid:        user.uid,
-    email:      user.email,
-    displayName: user.displayName,
-    photoURL:   user.photoURL,
-    loginMethod: 'google'
-  };
-  
-  // Store in localStorage
-  localStorage.setItem('user', JSON.stringify(userData));
-  localStorage.setItem('authToken', user.accessToken);
-  
-  console.log('✅ Logged in as:', user.email);
-  
-  // Redirect to dashboard or properties page
-  window.location.href = 'properties.html';
-}
-
-// ===================================================
-// HANDLE GOOGLE LOGIN ERROR
-// ===================================================
-function handleGoogleLoginError(error) {
-  let errorMsg = 'Google login failed. Please try again.';
-  
-  switch (error.code) {
-    case 'auth/popup-closed-by-user':
-      errorMsg = 'Login popup was closed.';
-      break;
-    case 'auth/popup-blocked':
-      errorMsg = 'Popup was blocked. Please allow popups for this site.';
-      break;
-    case 'auth/account-exists-with-different-credential':
-      errorMsg = 'An account already exists with this email.';
-      break;
-    case 'auth/invalid-credential':
-      errorMsg = 'Invalid credentials. Please try again.';
-      break;
-  }
-  
-  showAuthError('loginError', 'loginErrorMsg', errorMsg);
 }
 
 // ===================================================

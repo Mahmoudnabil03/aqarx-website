@@ -22,14 +22,14 @@ function socialLogin(provider) {
   if (provider === 'Google') {
     loginWithGoogle();
   } else if (provider === 'Facebook') {
-    alert('Facebook login coming soon! Please use Google or email for now.');
+    loginWithFacebook();
   } else {
-    alert(`${provider} login coming soon! Please use email for now.`);
+    alert(`${provider} login coming soon!`);
   }
 }
 
 // ===================================================
-// LOGIN
+// LOGIN WITH EMAIL & PASSWORD (Firebase)
 // ===================================================
 function handleLogin() {
   const email    = document.getElementById('loginEmail')?.value.trim();
@@ -63,22 +63,45 @@ function handleLogin() {
   btn.disabled  = true;
   btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
 
-  // Simulate login — in future connects to real backend
-  setTimeout(() => {
-    // Save user to localStorage so properties page shows upload button
-    const userName = email.split('@')[0];
-    localStorage.setItem('aqarx_user', userName);
-    localStorage.setItem('aqarx_email', email);
-
-    // Show success
-    btn.style.display    = 'none';
-    if (success) success.style.display = 'flex';
-
-    // Redirect to homepage after 1.5 seconds
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 1500);
-  }, 1200);
+  // Firebase email/password login
+  if (typeof auth !== 'undefined') {
+    auth.signInWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        const user = userCredential.user;
+        handleFirebaseLoginSuccess(user, 'email');
+        
+        // Show success
+        btn.style.display    = 'none';
+        if (success) success.style.display = 'flex';
+        
+        // Redirect after 1.5 seconds
+        setTimeout(() => {
+          window.location.href = 'properties.html';
+        }, 1500);
+      })
+      .catch(error => {
+        btn.disabled  = false;
+        btn.innerHTML = 'Login';
+        
+        let errorText = 'Login failed. Please try again.';
+        if (error.code === 'auth/user-not-found') {
+          errorText = 'No account found with this email. Please register first.';
+        } else if (error.code === 'auth/wrong-password') {
+          errorText = 'Incorrect password. Please try again.';
+        } else if (error.code === 'auth/invalid-email') {
+          errorText = 'Invalid email address.';
+        } else if (error.code === 'auth/too-many-requests') {
+          errorText = 'Too many failed attempts. Please try again later.';
+        }
+        
+        showAuthError('loginError', 'loginErrorMsg', errorText);
+        console.error('Login error:', error);
+      });
+  } else {
+    btn.disabled  = false;
+    btn.innerHTML = 'Login';
+    showAuthError('loginError', 'loginErrorMsg', '❌ Firebase not initialized. Please refresh the page.');
+  }
 }
 
 // ===================================================
@@ -99,6 +122,9 @@ function selectType(btn, type) {
   }
 }
 
+// ===================================================
+// REGISTER WITH EMAIL & PASSWORD (Firebase)
+// ===================================================
 function handleRegister() {
   const firstName = document.getElementById('regFirstName')?.value.trim();
   const lastName  = document.getElementById('regLastName')?.value.trim();
@@ -148,22 +174,66 @@ function handleRegister() {
   btn.disabled  = true;
   btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
 
-  // Simulate registration — in future connects to real backend
-  setTimeout(() => {
-    // Save user to localStorage
-    localStorage.setItem('aqarx_user', firstName);
-    localStorage.setItem('aqarx_email', email);
-    localStorage.setItem('aqarx_type', selectedAccountType);
-
-    // Show success
-    btn.style.display   = 'none';
-    success.style.display = 'flex';
-
-    // Redirect to homepage after 2 seconds
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 2000);
-  }, 1400);
+  // Firebase user creation
+  if (typeof auth !== 'undefined') {
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        const user = userCredential.user;
+        
+        // Update profile with name
+        user.updateProfile({
+          displayName: `${firstName} ${lastName}`
+        }).then(() => {
+          // Save additional data
+          const userData = {
+            uid:         user.uid,
+            email:       user.email,
+            displayName: `${firstName} ${lastName}`,
+            phone:       phone,
+            accountType: selectedAccountType,
+            photoURL:    user.photoURL || 'https://via.placeholder.com/40',
+            loginMethod: 'email'
+          };
+          
+          localStorage.setItem('user', JSON.stringify(userData));
+          localStorage.setItem('authToken', user.accessToken);
+          localStorage.setItem('aqarx_user', firstName);
+          localStorage.setItem('aqarx_email', email);
+          localStorage.setItem('aqarx_type', selectedAccountType);
+          
+          // Show success
+          btn.style.display   = 'none';
+          success.style.display = 'flex';
+          
+          // Redirect after 2 seconds
+          setTimeout(() => {
+            window.location.href = 'properties.html';
+          }, 2000);
+        });
+      })
+      .catch(error => {
+        btn.disabled  = false;
+        btn.innerHTML = 'Create Account';
+        
+        let errorText = 'Registration failed. Please try again.';
+        if (error.code === 'auth/email-already-in-use') {
+          errorText = 'This email is already registered. Please login instead.';
+        } else if (error.code === 'auth/weak-password') {
+          errorText = 'Password is too weak. Use 8+ characters with letters, numbers, and symbols.';
+        } else if (error.code === 'auth/invalid-email') {
+          errorText = 'Invalid email address.';
+        } else if (error.code === 'auth/operation-not-allowed') {
+          errorText = 'Email/password registration is not enabled.';
+        }
+        
+        showAuthError('regError', 'regErrorMsg', errorText);
+        console.error('Registration error:', error);
+      });
+  } else {
+    btn.disabled  = false;
+    btn.innerHTML = 'Create Account';
+    showAuthError('regError', 'regErrorMsg', '❌ Firebase not initialized. Please refresh the page.');
+  }
 }
 
 // ===================================================
@@ -211,14 +281,68 @@ function isValidEmail(email) {
 }
 
 // ===================================================
+// HANDLE SUCCESSFUL FIREBASE LOGIN
+// ===================================================
+function handleFirebaseLoginSuccess(user, method) {
+  const userData = {
+    uid:         user.uid,
+    email:       user.email,
+    displayName: user.displayName || user.email.split('@')[0],
+    photoURL:    user.photoURL || 'https://via.placeholder.com/40',
+    loginMethod: method
+  };
+  
+  localStorage.setItem('user', JSON.stringify(userData));
+  localStorage.setItem('authToken', user.accessToken);
+  localStorage.setItem('aqarx_user', user.displayName || user.email.split('@')[0]);
+  localStorage.setItem('aqarx_email', user.email);
+  
+  console.log('✅ User logged in:', user.email);
+}
+
+// ===================================================
+// LOGIN WITH FACEBOOK (Firebase OAuth)
+// ===================================================
+function loginWithFacebook() {
+  if (typeof auth === 'undefined') {
+    alert('❌ Firebase not initialized. Please refresh the page.');
+    return;
+  }
+  
+  const facebookProvider = new firebase.auth.FacebookAuthProvider();
+  facebookProvider.setCustomParameters({ 'display': 'popup' });
+  
+  auth.signInWithPopup(facebookProvider)
+    .then(result => {
+      const user = result.user;
+      handleFirebaseLoginSuccess(user, 'facebook');
+      window.location.href = 'properties.html';
+    })
+    .catch(error => {
+      console.error('Facebook login error:', error);
+      
+      let errorMsg = 'Facebook login failed. Please try again.';
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMsg = 'Login popup was closed.';
+      } else if (error.code === 'auth/popup-blocked') {
+        errorMsg = 'Popup was blocked. Please allow popups for this site.';
+      } else if (error.code === 'auth/account-exists-with-different-credential') {
+        errorMsg = 'An account already exists with this email.';
+      }
+      
+      showAuthError('loginError', 'loginErrorMsg', errorMsg);
+    });
+}
+
+// ===================================================
 // AUTO-LOGIN CHECK
-// If user is already logged in, redirect to homepage
+// If user is already logged in, redirect to properties page
 // ===================================================
 const currentPage = window.location.pathname;
-const loggedIn    = localStorage.getItem('aqarx_user');
+const loggedIn    = localStorage.getItem('user');
 
 if (loggedIn && (currentPage.includes('login') || currentPage.includes('register'))) {
-  // Already logged in — redirect to homepage
-  // Uncomment the line below when you're ready to enforce this
-  // window.location.href = 'index.html';
+  // Already logged in — redirect to properties page
+  // Uncomment the line below to enforce this
+  // window.location.href = 'properties.html';
 }
