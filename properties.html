@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AQARX – Properties</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/properties.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/chatbot.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="AQARX Logo" class="logo-img"/>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html" class="active">Properties</a></li>
+        <li><a href="decorators.html">Decorators</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-auth" id="navAuth">
+        <!-- Changes based on login state — controlled by JS -->
+        <a href="login.html" class="btn-outline" id="btnLogin">Login</a>
+        <a href="register.html" class="btn-solid" id="btnRegister">Register</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Browse Properties</h1>
+      <p>Find your perfect home, apartment, villa, or office across Egypt</p>
+    </div>
+  </section>
+
+  <!-- ===== LIST YOUR PROPERTY BANNER ===== -->
+  <!-- Shows differently based on login state -->
+  <div class="list-banner" id="listBanner">
+    <div class="container list-banner-inner">
+
+      <!-- NOT LOGGED IN VERSION -->
+      <div id="bannerGuest" class="banner-guest">
+        <div class="banner-text">
+          <i class="fas fa-tag"></i>
+          <span><strong>List your property for FREE!</strong> Register now and reach thousands of buyers.</span>
+        </div>
+        <div class="banner-btns">
+          <a href="register.html" class="btn-solid">Register Free</a>
+          <a href="login.html" class="btn-outline">Login</a>
+        </div>
+      </div>
+
+      <!-- LOGGED IN VERSION -->
+      <div id="bannerUser" class="banner-user" style="display:none;">
+        <div class="banner-text">
+          <i class="fas fa-circle-check" style="color:#22cc66"></i>
+          <span>Welcome back, <strong id="userName">User</strong>! You can list properties for free.</span>
+        </div>
+        <button class="btn-solid" id="openUploadBtn">
+          <i class="fas fa-plus"></i> List a Property
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== UPLOAD MODAL (only visible when logged in and clicks List) ===== -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2><i class="fas fa-plus-circle"></i> List Your Property</h2>
+        <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label>Property Title *</label>
+          <input type="text" placeholder="e.g. Modern Apartment in New Cairo" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Property Type *</label>
+            <select>
+              <option>Apartment</option>
+              <option>Villa</option>
+              <option>Office</option>
+              <option>Land</option>
+              <option>Shop</option>
+              <option>Duplex</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Listing Type *</label>
+            <select>
+              <option>For Sale</option>
+              <option>For Rent</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Price (EGP) *</label>
+            <input type="number" placeholder="e.g. 3500000" />
+          </div>
+          <div class="form-group">
+            <label>Area (m²) *</label>
+            <input type="number" placeholder="e.g. 180" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Bedrooms</label>
+            <select>
+              <option>Studio</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Bathrooms</label>
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Location / Area *</label>
+          <input type="text" placeholder="e.g. 5th Settlement, New Cairo" />
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea rows="3" placeholder="Describe your property — features, floor, finishing, etc."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Property Photos</label>
+          <div class="photo-upload" id="photoUpload">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Click to upload photos</p>
+            <span>JPG, PNG up to 10MB each — max 10 photos</span>
+            <input type="file" multiple accept="image/*" id="photoInput" style="display:none"/>
+          </div>
+        </div>
+
+        <div class="free-badge">
+          <i class="fas fa-check-circle"></i>
+          This listing is <strong>100% FREE</strong> — no hidden fees
+        </div>
+
+        <button class="btn-submit">
+          <i class="fas fa-paper-plane"></i> Submit Listing
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FILTERS + RESULTS ===== -->
+  <section class="properties-section">
+    <div class="container properties-layout">
+
+      <!-- SIDEBAR FILTERS -->
+      <aside class="filters-sidebar">
+        <div class="filters-header">
+          <h3>Filter Properties</h3>
+          <button class="clear-filters">Clear All</button>
+        </div>
+
+        <div class="filter-group">
+          <label>Listing Type</label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="type" checked/> All</label>
+            <label class="radio-label"><input type="radio" name="type"/> For Sale</label>
+            <label class="radio-label"><input type="radio" name="type"/> For Rent</label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Property Type</label>
+          <div class="checkbox-group">
+            <label class="check-label"><input type="checkbox" checked/> Apartment</label>
+            <label class="check-label"><input type="checkbox" checked/> Villa</label>
+            <label class="check-label"><input type="checkbox"/> Office</label>
+            <label class="check-label"><input type="checkbox"/> Land</label>
+            <label class="check-label"><input type="checkbox"/> Shop</label>
+            <label class="check-label"><input type="checkbox"/> Duplex</label>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Price Range (EGP)</label>
+          <input type="number" class="filter-input" placeholder="Min Price"/>
+          <input type="number" class="filter-input" placeholder="Max Price" style="margin-top:8px"/>
+        </div>
+
+        <div class="filter-group">
+          <label>Bedrooms</label>
+          <div class="bed-buttons">
+            <button class="bed-btn active">Any</button>
+            <button class="bed-btn">1</button>
+            <button class="bed-btn">2</button>
+            <button class="bed-btn">3</button>
+            <button class="bed-btn">4+</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Area (m²)</label>
+          <input type="number" class="filter-input" placeholder="Min m²"/>
+          <input type="number" class="filter-input" placeholder="Max m²" style="margin-top:8px"/>
+        </div>
+
+        <div class="filter-group">
+          <label>Location</label>
+          <select class="filter-select">
+            <option>All Cairo</option>
+            <option>New Cairo</option>
+            <option>Maadi</option>
+            <option>Heliopolis</option>
+            <option>Zamalek</option>
+            <option>Sheikh Zayed</option>
+            <option>6th of October</option>
+            <option>Nasr City</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Features</label>
+          <div class="checkbox-group">
+            <label class="check-label"><input type="checkbox"/> Furnished</label>
+            <label class="check-label"><input type="checkbox"/> Pool</label>
+            <label class="check-label"><input type="checkbox"/> Gym</label>
+            <label class="check-label"><input type="checkbox"/> Parking</label>
+            <label class="check-label"><input type="checkbox"/> Security</label>
+            <label class="check-label"><input type="checkbox"/> Garden</label>
+          </div>
+        </div>
+
+        <button class="btn-apply">Apply Filters</button>
+      </aside>
+
+      <!-- PROPERTIES RESULTS -->
+      <div class="properties-results">
+
+        <!-- RESULTS HEADER -->
+        <div class="results-header">
+          <span class="results-count">Showing <strong>24</strong> properties</span>
+          <div class="results-controls">
+            <select class="sort-select">
+              <option>Sort: Newest First</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Area: Largest First</option>
+            </select>
+            <button class="view-btn active" id="gridViewBtn"><i class="fas fa-th"></i></button>
+            <button class="view-btn" id="listViewBtn"><i class="fas fa-list"></i></button>
+          </div>
+        </div>
+
+        <!-- PROPERTY CARDS GRID -->
+        <div class="properties-grid" id="propertiesGrid">
+
+          <div class="property-card">
+            <div class="card-image">
+              <div class="card-img-placeholder"><i class="fas fa-building"></i></div>
+              <span class="card-badge">For Sale</span>
+              <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+            </div>
+            <div class="card-body">
+              <h3>Modern Apartment – New Cairo</h3>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> 5th Settlement, New Cairo</p>
+              <div class="card-specs">
+                <span><i class="fas fa-bed"></i> 3 Beds</span>
+                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                <span><i class="fas fa-vector-square"></i> 180 m²</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">3,500,000 EGP</span>
+                <a href="property-detail.html" class="btn-card">View</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div class="card-image">
+              <div class="card-img-placeholder"><i class="fas fa-home"></i></div>
+              <span class="card-badge">For Sale</span>
+              <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+            </div>
+            <div class="card-body">
+              <h3>Luxury Villa – Sheikh Zayed</h3>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> Sheikh Zayed, Giza</p>
+              <div class="card-specs">
+                <span><i class="fas fa-bed"></i> 5 Beds</span>
+                <span><i class="fas fa-bath"></i> 4 Baths</span>
+                <span><i class="fas fa-vector-square"></i> 450 m²</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">12,000,000 EGP</span>
+                <a href="property-detail.html" class="btn-card">View</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div class="card-image">
+              <div class="card-img-placeholder"><i class="fas fa-city"></i></div>
+              <span class="card-badge rent">For Rent</span>
+              <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+            </div>
+            <div class="card-body">
+              <h3>Office Space – Maadi</h3>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> Maadi, Cairo</p>
+              <div class="card-specs">
+                <span><i class="fas fa-door-open"></i> 6 Rooms</span>
+                <span><i class="fas fa-bath"></i> 2 Baths</span>
+                <span><i class="fas fa-vector-square"></i> 220 m²</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">25,000 EGP/mo</span>
+                <a href="property-detail.html" class="btn-card">View</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div class="card-image">
+              <div class="card-img-placeholder"><i class="fas fa-house-chimney"></i></div>
+              <span class="card-badge">For Sale</span>
+              <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+            </div>
+            <div class="card-body">
+              <h3>Duplex – Heliopolis</h3>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> Heliopolis, Cairo</p>
+              <div class="card-specs">
+                <span><i class="fas fa-bed"></i> 4 Beds</span>
+                <span><i class="fas fa-bath"></i> 3 Baths</span>
+                <span><i class="fas fa-vector-square"></i> 310 m²</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">6,200,000 EGP</span>
+                <a href="property-detail.html" class="btn-card">View</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div class="card-image">
+              <div class="card-img-placeholder"><i class="fas fa-building"></i></div>
+              <span class="card-badge rent">For Rent</span>
+              <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+            </div>
+            <div class="card-body">
+              <h3>Studio Apartment – Zamalek</h3>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> Zamalek, Cairo</p>
+              <div class="card-specs">
+                <span><i class="fas fa-bed"></i> Studio</span>
+                <span><i class="fas fa-bath"></i> 1 Bath</span>
+                <span><i class="fas fa-vector-square"></i> 65 m²</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">8,500 EGP/mo</span>
+                <a href="property-detail.html" class="btn-card">View</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div class="card-image">
+              <div class="card-img-placeholder"><i class="fas fa-warehouse"></i></div>
+              <span class="card-badge">For Sale</span>
+              <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+            </div>
+            <div class="card-body">
+              <h3>Twin House – October City</h3>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> 6th of October, Giza</p>
+              <div class="card-specs">
+                <span><i class="fas fa-bed"></i> 4 Beds</span>
+                <span><i class="fas fa-bath"></i> 3 Baths</span>
+                <span><i class="fas fa-vector-square"></i> 280 m²</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">7,800,000 EGP</span>
+                <a href="property-detail.html" class="btn-card">View</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- LOAD MORE -->
+        <div class="load-more">
+          <button class="btn-load-more">Load More Properties <i class="fas fa-chevron-down"></i></button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="AQARX" class="footer-logo"/>
+        <p>Egypt's smartest real estate platform. Find, visualize, and own your dream property.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="decorators.html">Decorators</a></li>
+          <li><a href="developers.html">Developers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About AQARX</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i>  +201101100379 </p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:AQARX@OUTLOOK.COM?subject=Inquiry%20from%20AQARX%20Website&body=Hello%20AQARX%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20your%20services.%0A%0AThank%20you">AQARX@OUTLOOK.COM</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AQARX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+  <script src="js/firebase-config.js"></script>
+  
+  <script src="js/main.js"></script>
+  <script src="js/properties.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

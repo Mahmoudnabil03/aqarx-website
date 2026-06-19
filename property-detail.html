@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AQARX – Modern Apartment, New Cairo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/property-detail.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/chatbot.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="AQARX Logo" class="logo-img"/>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html" class="active">Properties</a></li>
+        <li><a href="decorators.html">Decorators</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-outline">Login</a>
+        <a href="register.html" class="btn-solid">Register</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right"></i>
+      <a href="properties.html">Properties</a>
+      <i class="fas fa-chevron-right"></i>
+      <span>Modern Apartment – New Cairo</span>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <section class="detail-section">
+    <div class="container detail-layout">
+
+      <!-- LEFT COLUMN -->
+      <div class="detail-main">
+
+        <!-- PHOTO GALLERY -->
+        <div class="gallery">
+          <div class="gallery-main">
+            <div class="gallery-main-img" id="mainImg">
+              <i class="fas fa-building"></i>
+              <span>Main Photo</span>
+            </div>
+            <span class="gallery-badge">For Sale</span>
+            <span class="gallery-ai-badge"><i class="fas fa-magic"></i> AI Preview Available</span>
+          </div>
+          <div class="gallery-thumbs">
+            <div class="thumb active" onclick="setMain(this, 'fa-building', 'Main Photo')">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="thumb" onclick="setMain(this, 'fa-couch', 'Living Room')">
+              <i class="fas fa-couch"></i>
+            </div>
+            <div class="thumb" onclick="setMain(this, 'fa-bed', 'Master Bedroom')">
+              <i class="fas fa-bed"></i>
+            </div>
+            <div class="thumb" onclick="setMain(this, 'fa-utensils', 'Kitchen')">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <div class="thumb" onclick="setMain(this, 'fa-bath', 'Bathroom')">
+              <i class="fas fa-bath"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROPERTY TITLE & QUICK INFO -->
+        <div class="detail-title-block">
+          <div class="detail-title-row">
+            <div>
+              <h1>Modern Apartment – New Cairo</h1>
+              <p class="detail-location">
+                <i class="fas fa-map-marker-alt"></i> 5th Settlement, New Cairo, Cairo
+              </p>
+            </div>
+            <div class="detail-price-block">
+              <span class="detail-price">3,500,000 EGP</span>
+              <span class="price-note">Negotiable</span>
+            </div>
+          </div>
+
+          <div class="detail-specs-bar">
+            <div class="spec-item">
+              <i class="fas fa-bed"></i>
+              <span>3 Bedrooms</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-bath"></i>
+              <span>2 Bathrooms</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-vector-square"></i>
+              <span>180 m²</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-layer-group"></i>
+              <span>Floor 7 of 12</span>
+            </div>
+            <div class="spec-item">
+              <i class="fas fa-calendar"></i>
+              <span>Built 2022</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI VISUALIZER BANNER -->
+        <div class="ai-banner">
+          <div class="ai-banner-text">
+            <i class="fas fa-wand-magic-sparkles"></i>
+            <div>
+              <h3>See This Apartment Fully Furnished</h3>
+              <p>Use our Google Flow AI to generate a cinematic video of this space in your chosen style — Modern, Classic, or Oriental.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="detail-block">
+          <h2>About This Property</h2>
+          <p>This stunning modern apartment is located in the heart of the 5th Settlement in New Cairo, offering a premium living experience with high-end finishes throughout. The apartment features an open-plan living and dining area that flows onto a spacious balcony with panoramic city views.</p>
+          <p style="margin-top:12px">The kitchen is fully fitted with imported cabinets and granite countertops. All three bedrooms feature built-in wardrobes, with the master bedroom having an en-suite bathroom. The property is in a secured compound with 24/7 security, a swimming pool, and a fully equipped gym.</p>
+          <div class="read-more-wrap" id="readMoreWrap">
+            <p>The apartment is situated on the 7th floor of a 12-floor building, ensuring excellent natural light and privacy. It is within walking distance of major malls, international schools, and medical centers. The compound offers underground parking, a children's playground, and beautifully landscaped gardens.</p>
+          </div>
+          <button class="read-more-btn" id="readMoreBtn" onclick="toggleReadMore()">
+            Read More <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- FEATURES & AMENITIES -->
+        <div class="detail-block">
+          <h2>Features & Amenities</h2>
+          <div class="features-grid">
+            <div class="feature-item"><i class="fas fa-check"></i> Central A/C</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Built-in Wardrobes</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Private Balcony</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Swimming Pool</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Gym & Fitness</div>
+            <div class="feature-item"><i class="fas fa-check"></i> 24/7 Security</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Underground Parking</div>
+            <div class="feature-item"><i class="fas fa-check"></i> High-Speed Elevator</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Intercom System</div>
+            <div class="feature-item"><i class="fas fa-check"></i> CCTV Cameras</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Children's Area</div>
+            <div class="feature-item"><i class="fas fa-check"></i> Landscaped Gardens</div>
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="detail-block">
+          <h2>Location</h2>
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <p>5th Settlement, New Cairo</p>
+            <span>Map integration coming soon</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — STICKY SIDEBAR -->
+      <aside class="detail-sidebar">
+
+        <!-- CONTACT CARD -->
+        <div class="contact-card">
+          <div class="agent-info">
+            <div class="agent-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <h4>Ahmed Hassan</h4>
+              <p>AQARX Verified Agent</p>
+              <span class="verified-badge"><i class="fas fa-shield-check"></i> Verified</span>
+            </div>
+          </div>
+
+          <div class="contact-buttons">
+            <a href="tel:+201101100379" class="btn-contact phone">
+              <i class="fas fa-phone"></i> Call Agent
+            </a>
+            <a href="https://wa.me/201101100379" target="_blank" class="btn-contact whatsapp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <button class="btn-contact email" onclick="toggleEmailForm()">
+              <i class="fas fa-envelope"></i> Send Message
+            </button>
+          </div>
+
+          <!-- EMAIL FORM (hidden by default) -->
+          <div class="email-form" id="emailForm" style="display:none">
+            <input type="text" placeholder="Your Name" />
+            <input type="email" placeholder="Your Email" />
+            <input type="tel" placeholder="Your Phone" />
+            <textarea rows="3" placeholder="I'm interested in this property..."></textarea>
+            <button class="btn-submit-msg">Send Message <i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <!-- PROPERTY SUMMARY CARD -->
+        <div class="summary-card">
+          <h4>Property Details</h4>
+          <ul class="summary-list">
+            <li><span>Type</span><span>Apartment</span></li>
+            <li><span>Status</span><span>For Sale</span></li>
+            <li><span>Price</span><span class="red">3,500,000 EGP</span></li>
+            <li><span>Area</span><span>180 m²</span></li>
+            <li><span>Bedrooms</span><span>3</span></li>
+            <li><span>Bathrooms</span><span>2</span></li>
+            <li><span>Floor</span><span>7 / 12</span></li>
+            <li><span>Year Built</span><span>2022</span></li>
+            <li><span>Finishing</span><span>Super Lux</span></li>
+            <li><span>Furnished</span><span>No</span></li>
+            <li><span>Compound</span><span>Yes</span></li>
+            <li><span>Reference</span><span class="red">AQX-00124</span></li>
+          </ul>
+        </div>
+
+        <!-- SAVE / SHARE -->
+        <div class="action-card">
+          <button class="btn-action" id="saveBtn" onclick="toggleSave()">
+            <i class="far fa-heart" id="heartIcon"></i> Save Property
+          </button>
+          <button class="btn-action" onclick="shareProperty()">
+            <i class="fas fa-share-alt"></i> Share
+          </button>
+        </div>
+
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===== SIMILAR PROPERTIES ===== -->
+  <section class="section similar-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Similar Properties</h2>
+        <a href="properties.html" class="see-all">See All <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="properties-grid">
+
+        <div class="property-card">
+          <div class="card-image">
+            <div class="card-img-placeholder"><i class="fas fa-building"></i></div>
+            <span class="card-badge">For Sale</span>
+            <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+          </div>
+          <div class="card-body">
+            <h3>Apartment – Madinaty</h3>
+            <p class="card-location"><i class="fas fa-map-marker-alt"></i> Madinaty, New Cairo</p>
+            <div class="card-specs">
+              <span><i class="fas fa-bed"></i> 3 Beds</span>
+              <span><i class="fas fa-bath"></i> 2 Baths</span>
+              <span><i class="fas fa-vector-square"></i> 165 m²</span>
+            </div>
+            <div class="card-footer">
+              <span class="card-price">2,900,000 EGP</span>
+              <a href="property-detail.html" class="btn-card">View</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="card-image">
+            <div class="card-img-placeholder"><i class="fas fa-home"></i></div>
+            <span class="card-badge">For Sale</span>
+            <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+          </div>
+          <div class="card-body">
+            <h3>Apartment – Rehab City</h3>
+            <p class="card-location"><i class="fas fa-map-marker-alt"></i> Al Rehab, New Cairo</p>
+            <div class="card-specs">
+              <span><i class="fas fa-bed"></i> 2 Beds</span>
+              <span><i class="fas fa-bath"></i> 2 Baths</span>
+              <span><i class="fas fa-vector-square"></i> 140 m²</span>
+            </div>
+            <div class="card-footer">
+              <span class="card-price">2,200,000 EGP</span>
+              <a href="property-detail.html" class="btn-card">View</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="property-card">
+          <div class="card-image">
+            <div class="card-img-placeholder"><i class="fas fa-city"></i></div>
+            <span class="card-badge">For Sale</span>
+            <span class="card-ai-badge"><i class="fas fa-magic"></i> AI Preview</span>
+          </div>
+          <div class="card-body">
+            <h3>Penthouse – New Cairo</h3>
+            <p class="card-location"><i class="fas fa-map-marker-alt"></i> 5th Settlement, Cairo</p>
+            <div class="card-specs">
+              <span><i class="fas fa-bed"></i> 4 Beds</span>
+              <span><i class="fas fa-bath"></i> 3 Baths</span>
+              <span><i class="fas fa-vector-square"></i> 260 m²</span>
+            </div>
+            <div class="card-footer">
+              <span class="card-price">5,800,000 EGP</span>
+              <a href="property-detail.html" class="btn-card">View</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="AQARX" class="footer-logo"/>
+        <p>Egypt's smartest real estate platform. Find, visualize, and own your dream property.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="decorators.html">Decorators</a></li>
+          <li><a href="developers.html">Developers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About AQARX</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i>  +201101100379 </p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:AQARX@OUTLOOK.COM?subject=Inquiry%20from%20AQARX%20Website&body=Hello%20AQARX%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20your%20services.%0A%0AThank%20you">AQARX@OUTLOOK.COM</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AQARX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+  <script src="js/firebase-config.js"></script>
+  
+  <script src="js/main.js"></script>
+  <script src="js/property-detail.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

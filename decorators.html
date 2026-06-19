@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AQARX – Decoration Partners</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/decorators.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/chatbot.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="AQARX Logo" class="logo-img"/>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="decorators.html" class="active">Decorators</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-outline">Login</a>
+        <a href="register.html" class="btn-solid">Register</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header decorators-header">
+    <div class="container">
+      <div class="header-content">
+        <p class="eyebrow">AQARX Partners</p>
+        <h1>Decoration & Interior Design Companies</h1>
+        <p>Connect with Egypt's top decoration companies. Browse portfolios, compare styles, and get your property furnished professionally.</p>
+        <div class="header-stats">
+          <div class="h-stat"><span>80+</span> Verified Partners</div>
+          <div class="h-stat"><span>4,000+</span> Projects Done</div>
+          <div class="h-stat"><span>98%</span> Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JOIN BANNER ===== -->
+  <div class="join-banner">
+    <div class="container join-banner-inner">
+      <div class="join-text">
+        <i class="fas fa-store"></i>
+        <span>Are you a decoration company? <strong>List your business for free on AQARX</strong> and reach thousands of property buyers.</span>
+      </div>
+      <a href="register.html" class="btn-solid">Join as Decorator <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- ===== FILTERS + GRID ===== -->
+  <section class="decorators-section">
+    <div class="container">
+
+      <!-- FILTER BAR -->
+      <div class="filter-bar">
+        <div class="filter-tabs">
+          <button class="ftab active" onclick="filterTab(this, 'all')">All</button>
+          <button class="ftab" onclick="filterTab(this, 'modern')">Modern</button>
+          <button class="ftab" onclick="filterTab(this, 'classic')">Classic</button>
+          <button class="ftab" onclick="filterTab(this, 'oriental')">Oriental</button>
+          <button class="ftab" onclick="filterTab(this, 'scandi')">Scandinavian</button>
+          <button class="ftab" onclick="filterTab(this, 'luxury')">Luxury</button>
+        </div>
+        <div class="filter-right">
+          <select class="filter-select-sm">
+            <option>All Areas</option>
+            <option>New Cairo</option>
+            <option>Maadi</option>
+            <option>Heliopolis</option>
+            <option>Sheikh Zayed</option>
+            <option>6th October</option>
+          </select>
+          <select class="filter-select-sm">
+            <option>Sort: Top Rated</option>
+            <option>Sort: Most Projects</option>
+            <option>Sort: Newest</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- DECORATORS GRID -->
+      <div class="dec-grid">
+
+        <!-- Card 1 -->
+        <div class="dec-card">
+          <div class="dec-card-top">
+            <div class="dec-logo"><i class="fas fa-couch"></i></div>
+            <div class="dec-badges">
+              <span class="badge-verified"><i class="fas fa-shield-check"></i> Verified</span>
+              <span class="badge-style modern">Modern</span>
+            </div>
+          </div>
+          <div class="dec-card-body">
+            <h3>EliteHome Design</h3>
+            <p class="dec-location"><i class="fas fa-map-marker-alt"></i> New Cairo & Maadi</p>
+            <p class="dec-desc">Specialists in modern and contemporary interiors. Full turnkey solutions from concept to completion.</p>
+            <div class="dec-stats">
+              <div class="dec-stat"><span>250+</span>Projects</div>
+              <div class="dec-stat"><span>4.9 ⭐</span>Rating</div>
+              <div class="dec-stat"><span>5 yrs</span>Experience</div>
+            </div>
+            <div class="dec-styles">
+              <span>Modern</span><span>Minimal</span><span>Luxury</span>
+            </div>
+          </div>
+          <div class="dec-card-footer">
+            <div class="dec-budget">Budget: 150K – 2M EGP</div>
+            <button class="btn-contact-dec" onclick="openContactModal('EliteHome Design')">
+              Contact <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="dec-card">
+          <div class="dec-card-top">
+            <div class="dec-logo classic"><i class="fas fa-crown"></i></div>
+            <div class="dec-badges">
+              <span class="badge-verified"><i class="fas fa-shield-check"></i> Verified</span>
+              <span class="badge-style classic">Classic</span>
+            </div>
+          </div>
+          <div class="dec-card-body">
+            <h3>Royal Interiors</h3>
+            <p class="dec-location"><i class="fas fa-map-marker-alt"></i> Heliopolis & Zamalek</p>
+            <p class="dec-desc">Classic and luxury interior design with European influences. Specializing in high-end villas and penthouses.</p>
+            <div class="dec-stats">
+              <div class="dec-stat"><span>180+</span>Projects</div>
+              <div class="dec-stat"><span>4.8 ⭐</span>Rating</div>
+              <div class="dec-stat"><span>8 yrs</span>Experience</div>
+            </div>
+            <div class="dec-styles">
+              <span>Classic</span><span>Luxury</span><span>French</span>
+            </div>
+          </div>
+          <div class="dec-card-footer">
+            <div class="dec-budget">Budget: 500K – 5M EGP</div>
+            <button class="btn-contact-dec" onclick="openContactModal('Royal Interiors')">
+              Contact <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="dec-card">
+          <div class="dec-card-top">
+            <div class="dec-logo oriental"><i class="fas fa-mosque"></i></div>
+            <div class="dec-badges">
+              <span class="badge-verified"><i class="fas fa-shield-check"></i> Verified</span>
+              <span class="badge-style oriental">Oriental</span>
+            </div>
+          </div>
+          <div class="dec-card-body">
+            <h3>Cairo Deco Co.</h3>
+            <p class="dec-location"><i class="fas fa-map-marker-alt"></i> All Cairo Governorate</p>
+            <p class="dec-desc">Masters of Arabic and Oriental interior design. Authentic mashrabiya, geometric patterns, and handcrafted furniture.</p>
+            <div class="dec-stats">
+              <div class="dec-stat"><span>320+</span>Projects</div>
+              <div class="dec-stat"><span>4.9 ⭐</span>Rating</div>
+              <div class="dec-stat"><span>12 yrs</span>Experience</div>
+            </div>
+            <div class="dec-styles">
+              <span>Oriental</span><span>Arabic</span><span>Moroccan</span>
+            </div>
+          </div>
+          <div class="dec-card-footer">
+            <div class="dec-budget">Budget: 100K – 3M EGP</div>
+            <button class="btn-contact-dec" onclick="openContactModal('Cairo Deco Co.')">
+              Contact <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="dec-card">
+          <div class="dec-card-top">
+            <div class="dec-logo scandi"><i class="fas fa-leaf"></i></div>
+            <div class="dec-badges">
+              <span class="badge-verified"><i class="fas fa-shield-check"></i> Verified</span>
+              <span class="badge-style scandi">Scandinavian</span>
+            </div>
+          </div>
+          <div class="dec-card-body">
+            <h3>Minimal Studio</h3>
+            <p class="dec-location"><i class="fas fa-map-marker-alt"></i> Sheikh Zayed & 6th October</p>
+            <p class="dec-desc">Scandinavian and minimalist design for modern Egyptian apartments. Clean, functional, and beautiful spaces.</p>
+            <div class="dec-stats">
+              <div class="dec-stat"><span>140+</span>Projects</div>
+              <div class="dec-stat"><span>4.7 ⭐</span>Rating</div>
+              <div class="dec-stat"><span>4 yrs</span>Experience</div>
+            </div>
+            <div class="dec-styles">
+              <span>Scandinavian</span><span>Minimal</span><span>Boho</span>
+            </div>
+          </div>
+          <div class="dec-card-footer">
+            <div class="dec-budget">Budget: 80K – 800K EGP</div>
+            <button class="btn-contact-dec" onclick="openContactModal('Minimal Studio')">
+              Contact <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="dec-card">
+          <div class="dec-card-top">
+            <div class="dec-logo luxury"><i class="fas fa-gem"></i></div>
+            <div class="dec-badges">
+              <span class="badge-verified"><i class="fas fa-shield-check"></i> Verified</span>
+              <span class="badge-style luxury">Luxury</span>
+            </div>
+          </div>
+          <div class="dec-card-body">
+            <h3>Prestige Interiors</h3>
+            <p class="dec-location"><i class="fas fa-map-marker-alt"></i> New Cairo & Madinaty</p>
+            <p class="dec-desc">Ultra-luxury interior design using imported Italian marble, bespoke furniture, and crystal chandeliers.</p>
+            <div class="dec-stats">
+              <div class="dec-stat"><span>90+</span>Projects</div>
+              <div class="dec-stat"><span>5.0 ⭐</span>Rating</div>
+              <div class="dec-stat"><span>6 yrs</span>Experience</div>
+            </div>
+            <div class="dec-styles">
+              <span>Luxury</span><span>Italian</span><span>Contemporary</span>
+            </div>
+          </div>
+          <div class="dec-card-footer">
+            <div class="dec-budget">Budget: 1M – 10M EGP</div>
+            <button class="btn-contact-dec" onclick="openContactModal('Prestige Interiors')">
+              Contact <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="dec-card">
+          <div class="dec-card-top">
+            <div class="dec-logo"><i class="fas fa-paint-roller"></i></div>
+            <div class="dec-badges">
+              <span class="badge-verified"><i class="fas fa-shield-check"></i> Verified</span>
+              <span class="badge-style modern">Modern</span>
+            </div>
+          </div>
+          <div class="dec-card-body">
+            <h3>Design Hub Egypt</h3>
+            <p class="dec-location"><i class="fas fa-map-marker-alt"></i> Nationwide</p>
+            <p class="dec-desc">Full-service interior design and decoration. Apartments, villas, offices, and commercial spaces across Egypt.</p>
+            <div class="dec-stats">
+              <div class="dec-stat"><span>500+</span>Projects</div>
+              <div class="dec-stat"><span>4.8 ⭐</span>Rating</div>
+              <div class="dec-stat"><span>10 yrs</span>Experience</div>
+            </div>
+            <div class="dec-styles">
+              <span>Modern</span><span>Classic</span><span>Commercial</span>
+            </div>
+          </div>
+          <div class="dec-card-footer">
+            <div class="dec-budget">Budget: 50K – 5M EGP</div>
+            <button class="btn-contact-dec" onclick="openContactModal('Design Hub Egypt')">
+              Contact <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- end dec-grid -->
+
+      <div class="load-more">
+        <button class="btn-load-more">Load More Decorators <i class="fas fa-chevron-down"></i></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CONTACT MODAL ===== -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2><i class="fas fa-envelope"></i> Contact <span id="modalCompanyName"></span></h2>
+        <button class="modal-close" onclick="closeContactModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" placeholder="e.g. Mohamed Ahmed"/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" placeholder="e.g. 01012345678"/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Property Type</label>
+          <select>
+            <option>Apartment</option>
+            <option>Villa</option>
+            <option>Duplex</option>
+            <option>Office</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Budget (EGP)</label>
+          <select>
+            <option>Under 100,000 EGP</option>
+            <option>100K – 300K EGP</option>
+            <option>300K – 700K EGP</option>
+            <option>700K – 2M EGP</option>
+            <option>2M+ EGP</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="3" placeholder="Tell them about your project, location, style preferences..."></textarea>
+        </div>
+        <div class="free-badge">
+          <i class="fas fa-check-circle"></i>
+          Connecting with decorators on AQARX is <strong>100% FREE</strong>
+        </div>
+        <button class="btn-submit" id="decSubmitBtn" onclick="submitContact()">
+          <i class="fas fa-paper-plane"></i> Send Request
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-dec-works">
+    <div class="container">
+      <div class="section-header center">
+        <h2>How It Works</h2>
+        <p>Get your property furnished in 3 simple steps</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-icon"><i class="fas fa-search"></i></div>
+          <h3>Browse & Choose</h3>
+          <p>Browse verified decoration companies, filter by style and budget, and pick the one that fits your vision.</p>
+        </div>
+        <div class="how-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="how-step">
+          <div class="how-icon"><i class="fas fa-comments"></i></div>
+          <h3>Connect & Discuss</h3>
+          <p>Send a free message through AQARX. The company contacts you within 24 hours to discuss your project.</p>
+        </div>
+        <div class="how-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="how-step">
+          <div class="how-icon"><i class="fas fa-home"></i></div>
+          <h3>Get It Done</h3>
+          <p>Approve the design plan, sit back, and move into your beautifully furnished dream home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="AQARX" class="footer-logo"/>
+        <p>Egypt's smartest real estate platform.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="decorators.html">Decorators</a></li>
+          <li><a href="developers.html">Developers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About AQARX</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i>  +201101100379 </p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:AQARX@OUTLOOK.COM?subject=Inquiry%20from%20AQARX%20Website&body=Hello%20AQARX%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20your%20services.%0A%0AThank%20you">AQARX@OUTLOOK.COM</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AQARX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+  <script src="js/firebase-config.js"></script>
+  
+  <script src="js/main.js"></script>
+  <script src="js/decorators.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

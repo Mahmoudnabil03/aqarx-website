@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AQARX – Contact Us</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/chatbot.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="AQARX Logo" class="logo-img"/>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="properties.html">Properties</a></li>
+        <li><a href="decorators.html">Decorators</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-auth">
+        <a href="login.html" class="btn-outline">Login</a>
+        <a href="register.html" class="btn-solid">Register</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="contact-hero">
+    <div class="contact-hero-overlay"></div>
+    <div class="container contact-hero-content">
+      <p class="eyebrow">Get in Touch</p>
+      <h1>We'd Love to Hear From You</h1>
+      <p>Have a question about a property, partnership, or just want to say hello? Our team is here to help.</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT LAYOUT ===== -->
+  <section class="contact-section">
+    <div class="container contact-layout">
+
+      <!-- LEFT — CONTACT INFO -->
+      <div class="contact-info">
+
+        <div class="info-block">
+          <h2>Contact Information</h2>
+          <p>Reach us through any of the channels below. We respond within 24 hours.</p>
+        </div>
+
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>Phone</h4>
+              <p> +201101100379 </p>
+              <span>Sun – Thu, 9AM – 6PM</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:AQARX@OUTLOOK.COM?subject=Inquiry%20from%20AQARX%20Website&body=Hello%20AQARX%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20your%20services.%0A%0AThank%20you" style="color: inherit; text-decoration: none;">AQARX@OUTLOOK.COM</a></p>
+              <span>We reply within 24 hours</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p> +201101100379 </p>
+              <span>Quick responses during business hours</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>Office</h4>
+              <p>New Cairo, Cairo</p>
+              <span>Egypt</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOCIAL -->
+        <div class="contact-social">
+          <h4>Follow Us</h4>
+          <div class="social-row">
+            <a href="#" class="social-btn facebook">
+              <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="#" class="social-btn tiktok">
+              <i class="fab fa-tiktok"></i> TikTok
+            </a>
+            <a href="#" class="social-btn youtube">
+              <i class="fab fa-youtube"></i> YouTube
+            </a>
+          </div>
+        </div>
+
+        <!-- INQUIRY TYPES -->
+        <div class="inquiry-types">
+          <h4>What can we help you with?</h4>
+          <div class="inquiry-grid">
+            <div class="inquiry-item" onclick="setSubject('Property Inquiry')">
+              <i class="fas fa-home"></i>
+              <span>Property Inquiry</span>
+            </div>
+            <div class="inquiry-item" onclick="setSubject('List a Property')">
+              <i class="fas fa-plus-circle"></i>
+              <span>List a Property</span>
+            </div>
+            <div class="inquiry-item" onclick="setSubject('Developer Partnership')">
+              <i class="fas fa-building"></i>
+              <span>Developer Partner</span>
+            </div>
+            <div class="inquiry-item" onclick="setSubject('Decorator Partnership')">
+              <i class="fas fa-paint-roller"></i>
+              <span>Decorator Partner</span>
+            </div>
+            <div class="inquiry-item" onclick="setSubject('AI Visualizer Support')">
+              <i class="fas fa-magic"></i>
+              <span>AI Visualizer</span>
+            </div>
+            <div class="inquiry-item" onclick="setSubject('General Question')">
+              <i class="fas fa-question-circle"></i>
+              <span>General Question</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT — CONTACT FORM -->
+      <div class="contact-form-wrap">
+        <div class="contact-form-card">
+          <h2>Send Us a Message</h2>
+          <p>Fill in the form and we'll get back to you shortly.</p>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" id="firstName" placeholder="Mohamed"/>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" id="lastName" placeholder="Ahmed"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="email" placeholder="your@email.com"/>
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder=" +201101100379 "/>
+          </div>
+
+          <div class="form-group">
+            <label>Subject *</label>
+            <input type="text" id="subject" placeholder="What is this about?"/>
+          </div>
+
+          <div class="form-group">
+            <label>How can we help? *</label>
+            <select id="helpType">
+              <option value="">Select a topic</option>
+              <option>Property Inquiry</option>
+              <option>List a Property</option>
+              <option>Developer Partnership</option>
+              <option>Decorator Partnership</option>
+              <option>AI Visualizer Support</option>
+              <option>Technical Issue</option>
+              <option>General Question</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea id="message" rows="5" placeholder="Tell us more about your inquiry..."></textarea>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="agreeCheck"/>
+            <label for="agreeCheck">I agree to the <a href="#" class="link-red">Privacy Policy</a> and <a href="#" class="link-red">Terms of Use</a></label>
+          </div>
+
+          <button class="btn-send" id="sendBtn" onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+
+          <!-- SUCCESS STATE -->
+          <div class="send-success" id="sendSuccess" style="display:none">
+            <i class="fas fa-check-circle"></i>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== MAP ===== -->
+  <section class="map-section">
+    <div class="map-placeholder-full">
+      <i class="fas fa-map-marked-alt"></i>
+      <p>AQARX Office — New Cairo, Cairo, Egypt</p>
+      <span>Map integration coming soon</span>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section section">
+    <div class="container">
+      <div class="section-header center">
+        <h2>Frequently Asked Questions</h2>
+        <p>Quick answers to common questions</p>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Is listing a property on AQARX really free?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Yes — completely free. Any registered user can list their property with photos, details, and pricing at no cost. No hidden fees, no commissions, no contracts.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>How does the AI Interior Visualizer work?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Upload a photo of your empty room, select a style (Modern, Classic, Oriental, etc.), and our FLUX AI generates a furnished version of your space. It's powered by Stable Diffusion and Llama AI through our Cloudflare infrastructure.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>How do I become a verified developer on AQARX?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Register a developer account and submit your company documents. Our team verifies within 2-3 business days. Once verified, you get the blue badge and access to developer-specific features.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Can decoration companies sell furnished apartments on AQARX?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Yes! Decoration companies can register as partners and list fully furnished apartments for sale, offer their design services, and connect directly with buyers who used the AI visualizer.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>What areas does AQARX cover?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We currently cover 27 cities across Egypt including all of Greater Cairo, Alexandria, North Coast, Red Sea, Ain Sokhna, and more. We're expanding monthly.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="AQARX" class="footer-logo"/>
+        <p>Egypt's smartest real estate platform.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="decorators.html">Decorators</a></li>
+          <li><a href="developers.html">Developers</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About AQARX</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i>  +201101100379 </p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:AQARX@OUTLOOK.COM?subject=Inquiry%20from%20AQARX%20Website&body=Hello%20AQARX%2C%0A%0AI%20would%20like%20to%20get%20in%20touch%20regarding%20your%20services.%0A%0AThank%20you">AQARX@OUTLOOK.COM</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AQARX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+  <script src="js/firebase-config.js"></script>
+  
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
