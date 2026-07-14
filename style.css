@@ -1,0 +1,350 @@
+/* --- CSS VARIABLES FOR BRANDING (Inspired by Logo image_0.png) --- */
+:root {
+    --color-black: #000;
+    --color-red-primary: #C00;        /* Glossy Red from buildings */
+    --color-red-deep: #800;          /* Darker shade for shadows and borders */
+    --color-red-bright: #F44;        /* Bright highlight red */
+    --color-silver-light: #DDD;       /* Chrome/Globe Silver */
+    --color-silver-dark: #888;        /* Dark silver for borders */
+    --color-white: #FFF;
+    --font-primary: 'Roboto', sans-serif;
+    --border-radius: 8px;
+    --box-shadow-red: 0 4px 12px rgba(192, 0, 0, 0.4);
+    --box-shadow-silver: 0 4px 10px rgba(136, 136, 136, 0.3);
+}
+
+/* --- GLOBAL STYLES --- */
+body {
+    background-color: var(--color-black);
+    color: var(--color-silver-light);
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    color: var(--color-red-bright);
+    font-weight: 700;
+}
+
+a {
+    color: var(--color-red-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-red-bright);
+}
+
+/* --- SITE HEADER --- */
+.site-header {
+    background-color: #0c0c0c; /* Very dark gray for subtle depth */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 2px solid var(--color-silver-dark);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 60px; /* Adjust based on your logo design */
+    width: auto;
+}
+
+.site-nav a {
+    color: var(--color-white);
+    margin-left: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.site-nav a:hover {
+    color: var(--color-red-bright);
+}
+
+/* --- MAIN CONTENT --- */
+main {
+    margin-top: 100px; /* Clear the fixed header */
+    padding: 40px;
+    min-height: 80vh;
+}
+
+.page-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- HERO & SEARCH (bayut.com inspired) --- */
+.hero-search {
+    text-align: center;
+    padding: 80px 0;
+    background: linear-gradient(to bottom, #111, var(--color-black));
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-silver-dark);
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.search-panel {
+    background-color: rgba(20, 20, 20, 0.8);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-red-deep);
+    box-shadow: var(--box-shadow-red);
+}
+
+.search-panel input, .search-panel select {
+    background-color: #222;
+    color: var(--color-silver-light);
+    border: 1px solid var(--color-silver-dark);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    font-size: 1rem;
+    width: 200px;
+}
+
+.search-panel input:focus, .search-panel select:focus {
+    border-color: var(--color-red-bright);
+    outline: none;
+}
+
+/* --- BUTTONS (Glossy red and chrome effects) --- */
+.btn-primary-red {
+    background: linear-gradient(to bottom, var(--color-red-bright), var(--color-red-deep));
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 15px 30px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary-red:hover {
+    background: linear-gradient(to bottom, #F66, #A00);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-red);
+}
+
+.btn-secondary-silver {
+    background: linear-gradient(to bottom, #DDD, #BBB);
+    color: #333;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-secondary-silver:hover {
+    background: linear-gradient(to bottom, #EEE, #CCC);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-silver);
+}
+
+/* --- FEATURED & PROPERTY GRIDS --- */
+.featured-listings h2, .listing-header h2 {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 2.5rem;
+}
+
+.featured-grid, .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* --- PROPERTY CARDS --- */
+.property-card {
+    background-color: #111;
+    border: 1px solid var(--color-silver-dark);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-red-bright);
+    box-shadow: var(--box-shadow-red);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-details {
+    padding: 15px;
+}
+
+.card-price {
+    font-size: 1.5rem;
+    color: var(--color-red-bright);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 5px;
+}
+
+.card-location {
+    color: var(--color-silver-dark);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.card-specs {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--color-silver-dark);
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+/* --- PROPERTY DETAIL PAGE --- */
+.detail-container {
+    padding-top: 20px;
+}
+
+#property-detail-content {
+    background-color: #111;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-silver-dark);
+    margin-top: 20px;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--color-silver-dark);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.detail-price {
+    font-size: 3rem;
+    color: var(--color-red-bright);
+    font-weight: 700;
+}
+
+.detail-specs {
+    display: flex;
+    gap: 30px;
+    color: var(--color-white);
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.gallery-main img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.detail-description h3, .detail-amenities h3 {
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.detail-description p {
+    color: var(--color-silver-light);
+    line-height: 1.8;
+}
+
+.amenities-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.amenities-list li {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 4px;
+    color: var(--color-white);
+}
+
+.amenities-list li:before {
+    content: "\2713"; /* Checkmark */
+    color: var(--color-red-bright);
+    margin-right: 10px;
+    font-weight: 700;
+}
+
+/* --- CONTACT PAGE --- */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.contact-layout h2 {
+    grid-column: 1 / -1;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    background-color: #222;
+    color: var(--color-silver-light);
+    border: 1px solid var(--color-silver-dark);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.contact-info {
+    color: var(--color-white);
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    background-color: #0c0c0c;
+    border-top: 2px solid var(--color-silver-dark);
+    padding: 30px;
+    text-align: center;
+    margin-top: auto;
+}

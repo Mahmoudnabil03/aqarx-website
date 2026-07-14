@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQARX | Real Estate - Premium Property Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Your existing meta tags and title -->
+    <title>AQARX | Real Estate - Premium Property Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Add this Font Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="AQARX | Real Estate Logo" class="site-logo">
+        </div>
+        <nav class="site-nav">
+            <a href="#home">HOME</a>
+            <a href="#listings">LISTINGS</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <section id="home" class="page-section">
+            <div class="hero-search">
+                <h1 class="hero-title">FIND YOUR PERFECT PROPERTY</h1>
+                
+                <div class="search-panel">
+                    <input type="text" id="search-location" placeholder="City or Community...">
+                    <select id="search-type">
+                        <option value="">Property Type</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="villa">Villa</option>
+                        <option value="house">House</option>
+                    </select>
+                    <input type="number" id="search-min-price" placeholder="Min Price">
+                    <input type="number" id="search-max-price" placeholder="Max Price">
+                    <button id="search-button" class="btn-primary-red">SEARCH</button>
+                </div>
+            </div>
+            
+            <div class="featured-listings">
+                <h2>Featured Properties</h2>
+                <div class="featured-grid" id="featured-property-list">
+                    </div>
+            </div>
+        </section>
+
+        <section id="listings" class="page-section" style="display: none;">
+            <div class="listing-header">
+                <h2>Property Listings</h2>
+                <button onclick="window.location.hash='#home'" class="btn-secondary-silver">Back to Search</button>
+            </div>
+            <div class="property-grid" id="all-property-list">
+                </div>
+        </section>
+
+        <section id="property-detail" class="page-section" style="display: none;">
+            <div class="detail-container">
+                <button onclick="window.location.hash='#listings'" class="btn-secondary-silver">Back to Listings</button>
+                <div id="property-detail-content">
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section" style="display: none;">
+            <div class="contact-layout">
+                <h2>Contact AQARX</h2>
+                <div class="contact-form">
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                    <textarea placeholder="Your Message"></textarea>
+                    <button class="btn-primary-red">Send Message</button>
+                </div>
+                <div class="contact-info">
+                    <p>Phone: +1 (800) AQARX-01</p>
+                    <p>Email: info@aqarx.com</p>
+                    <p>Address: 123 Real Estate Dr, Dubai, UAE</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2023 AQARX | Real Estate. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
